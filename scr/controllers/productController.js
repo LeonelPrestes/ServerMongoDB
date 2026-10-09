@@ -1,9 +1,13 @@
 const productService = require("../services/productService");
 
 function listarProdutos(req, res) {
-    const produtos = productService.listarProdutos();
+    try {
+        const produtos = productService.listarProdutos();
 
-    res.json(produtos);
+        res.json(produtos);
+    } catch (erro) {
+        next(erro)
+    }
 }
 
 function buscarProdutoPorId(req, res) {
