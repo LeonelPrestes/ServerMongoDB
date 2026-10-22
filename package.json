@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node scr/server.js"
+    "server": "node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^18.0.5",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.11.2"
   }
 }

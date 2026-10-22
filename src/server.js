@@ -1,15 +1,22 @@
+require("dotenv").config();
 const express = require("express");
+
+const conectDatabase = require("./config/database.js")
 const logger = require("./middlewares/loggerMiddleware.js")
 const errorHandler = require("./middlewares/errorMiddleware.js")
 const productRoutes = require("./routes/productRoutes.js");
 
+
 const app = express();
 
-app.use(express.json());
+conectDatabase()
 
+app.use(express.json());
 app.use(logger)
 
 app.use(productRoutes);
+
+const Product = require("./models/Product");
 
 app.use((req, res) => {
     res.status(404).json({
@@ -19,7 +26,9 @@ app.use((req, res) => {
 
 app.use(errorHandler)
 
+const port = process.env.PORT
 
-app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000");
+
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });
