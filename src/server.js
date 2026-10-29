@@ -5,6 +5,7 @@ const conectDatabase = require("./config/database.js")
 const logger = require("./middlewares/loggerMiddleware.js")
 const errorHandler = require("./middlewares/errorMiddleware.js")
 const productRoutes = require("./routes/productRoutes.js");
+const userRoutes = require("./routes/userRoutes.js")
 
 
 const app = express();
@@ -15,8 +16,7 @@ app.use(express.json());
 app.use(logger)
 
 app.use(productRoutes);
-
-const Product = require("./models/Product");
+app.use(userRoutes)
 
 app.use((req, res) => {
     res.status(404).json({
